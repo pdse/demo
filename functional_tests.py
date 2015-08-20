@@ -41,3 +41,4 @@ class NewVisitorTest(unittest.TestCase):	#1
 
 if __name__ == '__main__': #7
 	unittest.main(warnings='ignore') #8
+	
