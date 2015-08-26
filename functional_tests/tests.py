@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.test import LiveServerTestCase
+# from django.contrib.staticfiles.testing import StaticLiveServerCase
 # import unittest
 
 class NewVisitorTest(LiveServerTestCase):	#1
@@ -10,6 +11,7 @@ class NewVisitorTest(LiveServerTestCase):	#1
 		self.browser.implicitly_wait(3) # wait the web loading action for 3s.
 		
 	def tearDown(self): #3
+		self.browser.refresh()
 		self.browser.quit()
 		
 	def check_for_row_in_list_table(self, row_text):
@@ -118,6 +120,6 @@ class NewVisitorTest(LiveServerTestCase):	#1
 		self.assertAlmostEqual(
 			inputbox.location['x'] + inputbox.size['width']/2,
 			512,
-			delta=5
+			delta=10
 		)
 	
