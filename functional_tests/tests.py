@@ -1,11 +1,11 @@
 from selenium import webdriver
 import sys
 from selenium.webdriver.common.keys import Keys
-from django.test import LiveServerTestCase
-# from django.contrib.staticfiles.testing import StaticLiveServerCase
+# from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 # import unittest
 
-class NewVisitorTest(LiveServerTestCase):	#1
+class NewVisitorTest(StaticLiveServerTestCase):	#1
 	
 	@classmethod
 	def setUpClass(cls):
@@ -117,7 +117,8 @@ class NewVisitorTest(LiveServerTestCase):	#1
 		
 	def test_layout_and_styling(self):
 		# Edith goes to the home page
-		self.browser.get(self.live_server_url)
+		self.browser.get(self.server_url)
+		# self.browser.get(self.live_server_url)
 		self.browser.set_window_size(1024,768)
 		
 		# She notices the input box is nicely centered
