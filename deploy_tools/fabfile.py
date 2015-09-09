@@ -2,14 +2,14 @@ from fabric.contrib.files import append, exists, sed
 from fabric.api import env, local, run
 import random
 
-REPO_URL='https://superlists-staging.test-driven.com' # the deposit of the code
+REPO_URL='git@github.com:pdse/demo.git' # the deposit of the code
 
 def deploy():
 	site_folder='/home/%s/sites/%s' %(env.user, env.host)
 	source_folder=site_folder + '/source'
-	_create_directory_structure_if_neccessary(site_folder)
+	_create_directory_structure_if_necessary(site_folder)
 	_get_latest_source(source_folder)
-	_update_settings(souorce_folder,env.host)
+	_update_settings(source_folder,env.host)
 	_update_virtualenv(source_folder)
 	_update_static_files(source_folder)
 	_update_database(source_folder)
@@ -46,3 +46,10 @@ def _update_virtualenv(source_folder):
 		run('virtualenv --python=python3 %s' % (virtualenv_folder,))
 	run('%s/bin/pip install -r %s/requirements.txt' % (virtualenv_folder, source_folder))
 
+def _update_static_files(source_folder):
+	run('cd %s && ../virtualenv/bin/python3 manage.py collectstatic --noinput' % (source_folder,))
+
+def _update_database(source_folder):
+	run('cd %s && ../virtualenv/bin/python3 manage.py migrate --noinput' % (source_folder,))
+
+	
