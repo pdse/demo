@@ -64,7 +64,7 @@ class NewVisitorTest(FunctionalTest):	#1
 		
 		# Francis starts a new list by entering a new item. He
 		# is less interesting that Edith...
-		inputbox=self.self.get_item_input_box()
+		inputbox=self.get_item_input_box()
 		inputbox.send_keys('Buy milk')
 		inputbox.send_keys(Keys.ENTER)
 		

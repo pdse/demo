@@ -22,7 +22,7 @@ class ItemValidationTest(FunctionalTest):
 		self.check_for_row_in_list_table('1: Buy milk')
 		
 		# Perversely, she now decides to submit a second blank list item
-		self.browser.get_item_input_box().send_keys('\n')
+		self.get_item_input_box().send_keys('\n')
 		
 		# She receives a similar warning on the list page
 		self.check_for_row_in_list_table('1: Buy milk')
