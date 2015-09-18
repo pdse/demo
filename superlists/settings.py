@@ -43,6 +43,7 @@ INSTALLED_APPS = (
 AUTH_USER_MODEL = 'accounts.User'
 AUTHENTICATION_BACKENDS = (
 	'accounts.authentication.PersonaAuthenticationBackend',
+	'django.contrib.auth.backends.ModelBackend',
 )
 
 MIDDLEWARE_CLASSES = (

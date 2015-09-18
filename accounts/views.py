@@ -5,6 +5,6 @@ from django.http import HttpResponse
 # Create your views here.
 def persona_login(request):
 	user = authenticate(assertion=request.POST['assertion'])
-	if user:
+	if user is not None:
 		login(request, user)
 	return HttpResponse('OK')
